@@ -6,7 +6,7 @@ public class AppMain {
 	public static void main(String[] args) {
 		
 		TropicalApp app = new TropicalApp ();
-		app.mainscrn();
+		app.mainScreen();
 	}
 
 }
