@@ -111,13 +111,18 @@ public class Tropical {
 	
 	@Override
 	public String toString() {
-		return "Tropical [id=" + id + ", pw=" + pw + ", guest_id=" + guest_id + ", guest_pw=" + guest_pw
-				+ ", guest_name=" + guest_name + ", checkin=" + checkin + ", checkout=" + checkout + ", room=" + room
-				+ ", number=" + number + ", price=" + price + ", name=" + name + "]";
+		return "Id > " + guest_id + "\nName > " + guest_name + "\nCheck-in > " + checkin + "\nCheck-out > "
+				+ checkout + "\nRoom Number > " + room + "\nPerson > " + number + "\n";
 	}
 	
+
+//	public String toString() {
+//		return "Tropical [guest_id=" + guest_id + ", guest_name=" + guest_name + ", checkin=" + checkin + ", checkout="
+//				+ checkout + ", room=" + room + ", number=" + number + "]";
+//	}
+
 	public String selectBook() {
-		return "Check-in: " + checkin + "Check-out:" + checkout + "Room Number: " + room + "Person: " + number;
+		return "Check-in > " + checkin + "\nCheck-out > " + checkout + "\nRoom Number > " + room + "\nPerson > " + number;
 	}
 	
 	public Tropical(String guest_id, String checkin, String checkout, int room, int number) {
@@ -176,6 +181,17 @@ public class Tropical {
 		this.number = number;
 		this.price = price;
 	}
+	
+	public Tropical(String guest_id, String guest_name, String checkin, String checkout, int room, int number) {
+		super();
+		this.guest_id = guest_id;
+		this.guest_name = guest_name;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.room = room;
+		this.number = number;
+	}
+
 	public Tropical(String id, int pw) {
 		super();
 		this.id = id;

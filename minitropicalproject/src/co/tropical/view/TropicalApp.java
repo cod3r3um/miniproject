@@ -77,18 +77,21 @@ public class TropicalApp {
 			menuNum = scanner2.nextInt();
 			switch(menuNum) {
 			case 1: 
+				adLogin();
+				break;
+			case 2:	
 				selectAll();
 				break;
-			case 2: 
+			case 3: 
 				selectYours();
 				break;
-			case 3:
+			case 4:
 				book();
 				break;
-			case 4:
+			case 5:
 				adChange();
 				break;
-			case 5:
+			case 6:
 				adCancel();
 				break;
 			}
@@ -122,7 +125,7 @@ public class TropicalApp {
 			System.out.println("Welcome Boss!");
 		} else {
 			System.out.println("You don't have access.");
-		} mainScreen();
+		}
 	}
 	
 	private void signUp() {
@@ -152,7 +155,7 @@ public class TropicalApp {
 	}
 	
 	public void selectYours() {
-		System.out.print("Enter your Id > ");
+		System.out.print("Enter Id > ");
 		String guest_id = scanner1.next();
 		List<Tropical> tlist = access.selectYours(guest_id);
 		for (Tropical tropical : tlist) {
@@ -165,16 +168,16 @@ public class TropicalApp {
 		System.out.print("Enter your Id > ");
 		tropical.setGuest_id(scanner1.next());
 		
-		System.out.print("Check-in: ");
-		tropical.setCheckin(scanner1.nextLine());
+		System.out.print("Check-in > ");
+		tropical.setCheckin(scanner1.next());
 		
-		System.out.print("Check-out: ");
+		System.out.print("Check-out > ");
 		tropical.setCheckout(scanner2.next());
 		
-		System.out.print("Room Number: ");
+		System.out.print("Room Number > ");
 		tropical.setRoom(scanner1.nextInt());
 		
-		System.out.println("Person: ");
+		System.out.print("Person > ");
 		tropical.setNumber(scanner2.nextInt());
 		
 		access.gstChange(tropical);
@@ -182,7 +185,7 @@ public class TropicalApp {
 		}
 	
 	public void gstCancel() {
-		System.out.println("Enter your Id > ");
+		System.out.print("Enter your Id > ");
 		String setGuest_id = scanner1.next();
 		access.gstCancel(setGuest_id);
 	}
@@ -205,26 +208,26 @@ public class TropicalApp {
 	
 	public void adChange() {
 		Tropical tropical = new Tropical();
-		System.out.print("Enter your Id > ");
+		System.out.print("Enter Guest Id > ");
 		tropical.setGuest_id(scanner1.next());
 		
-		System.out.print("Check-in: ");
-		tropical.setCheckin(scanner1.nextLine());
+		System.out.print("Check-in > ");
+		tropical.setCheckin(scanner1.next());
 		
-		System.out.print("Check-out: ");
+		System.out.print("Check-out > ");
 		tropical.setCheckout(scanner2.next());
 		
-		System.out.print("Room Number: ");
+		System.out.print("Room Number > ");
 		tropical.setRoom(scanner1.nextInt());
 		
-		System.out.println("Person: ");
+		System.out.print("Person > ");
 		tropical.setNumber(scanner2.nextInt());
 		
 		access.adChange(tropical);
 	}
 	
 	public void adCancel() {
-		System.out.println("Enter your Id > ");
+		System.out.print("Enter Id > ");
 		String setGuest_id = scanner2.next();
 		access.adCancel(setGuest_id);
 	}
@@ -242,11 +245,12 @@ public class TropicalApp {
 	
 	private void adMenuTitle() {
 		System.out.println("┌────────────────── T R O P I C A L ──────────────────┐");
-		System.out.println("│              1. Check all reservations              │");		
-		System.out.println("│              2. Check a reservation                 │");
-		System.out.println("│              3. Make a reservation                  │");
-		System.out.println("│              4. Change a reservation                │");
-		System.out.println("│              5. Cancel a reservation                │");
+		System.out.println("│              1. Admin Log in                        │");		
+		System.out.println("│              2. Check all reservations              │");		
+		System.out.println("│              3. Check a reservation                 │");
+		System.out.println("│              4. Make a reservation                  │");
+		System.out.println("│              5. Change a reservation                │");
+		System.out.println("│              6. Cancel a reservation                │");
 		System.out.println("└─────────────────────────────────────────────────────┘");
 	}
 	

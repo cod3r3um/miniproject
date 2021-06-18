@@ -61,11 +61,12 @@ public class TropicalDAO implements TropicalAccess {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				Tropical tropical = new Tropical();
-				tropical.setRoom(rs.getInt("room"));
-				tropical.setNumber(rs.getInt("number"));
+				tropical.setGuest_id(rs.getString("guest_id"));
+				tropical.setGuest_name(rs.getString("guest_name"));
 				tropical.setCheckin(rs.getString("checkin"));
 				tropical.setCheckout(rs.getString("checkout"));
-				tropical.setPrice(rs.getString("price"));
+				tropical.setRoom(rs.getInt("room"));
+				tropical.setNumber(rs.getInt("number"));
 				tList.add(tropical);
 			}
 		} catch (SQLException e) {
@@ -89,11 +90,10 @@ public class TropicalDAO implements TropicalAccess {
 				Tropical tropical = new Tropical();
 				tropical.setGuest_id(rs.getString("guest_id"));
 				tropical.setGuest_name(rs.getString("guest_name"));
-				tropical.setRoom(rs.getInt("room"));
-				tropical.setNumber(rs.getInt("number"));
 				tropical.setCheckin(rs.getString("checkin"));
 				tropical.setCheckout(rs.getString("checkout"));
-				tropical.setPrice(rs.getString("price"));
+				tropical.setRoom(rs.getInt("room"));
+				tropical.setNumber(rs.getInt("number"));
 				tList.add(tropical);
 			}
 		} catch (SQLException e) {
@@ -149,14 +149,14 @@ public class TropicalDAO implements TropicalAccess {
 	public void adChange(Tropical tropical) {
 		connect();
 		try {
-			psmt = conn.prepareStatement("update tropical set chcekin=?, checkout=?, room=?, number=?, name=? where guest_id=?");
+			psmt = conn.prepareStatement("update tropical set checkin=?, checkout=?, room=?, number=? where guest_id=?");
 			psmt.setString(1, tropical.getCheckin());
 			psmt.setString(2, tropical.getCheckout());
 			psmt.setInt(3, tropical.getRoom());
 			psmt.setInt(4, tropical.getNumber());
-			psmt.setString(5, tropical.getName());
+			psmt.setString(5, tropical.getGuest_id());
 			int r = psmt.executeUpdate();
-			System.out.println(r + "reservation is changed.");
+			System.out.println(r + " reservation is changed.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -171,7 +171,7 @@ public class TropicalDAO implements TropicalAccess {
 			psmt = conn.prepareStatement("delete from tropical where guest_id = ?");
 			psmt.setString(1, guest_id);
 			int r = psmt.executeUpdate();
-			System.out.println(r + "reservation is canceled.");
+			System.out.println(r + " reservation is canceled.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -290,13 +290,14 @@ public class TropicalDAO implements TropicalAccess {
 	public void gstChange(Tropical tropical) {
 		connect();
 		try {
-			psmt = conn.prepareStatement("update tropical set chcekin=?, checkout=?, room=?, number=? where guest_id=?");
+			psmt = conn.prepareStatement("update tropical set checkin=?, checkout=?, room=?, number=? where guest_id=?");
 			psmt.setString(1, tropical.getCheckin());
 			psmt.setString(2, tropical.getCheckout());
 			psmt.setInt(3, tropical.getRoom());
 			psmt.setInt(4, tropical.getNumber());
+			psmt.setString(5, tropical.getGuest_id());
 			int r = psmt.executeUpdate();
-			System.out.println(r + "reservation is changed.");
+			System.out.println(r + " reservation is changed.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -311,7 +312,7 @@ public class TropicalDAO implements TropicalAccess {
 			psmt = conn.prepareStatement("delete from tropical where guest_id = ?");
 			psmt.setString(1,guest_id);
 			int r = psmt.executeUpdate();
-			System.out.println(r + "reservation is canceled.");
+			System.out.println(r + " reservation is canceled.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
